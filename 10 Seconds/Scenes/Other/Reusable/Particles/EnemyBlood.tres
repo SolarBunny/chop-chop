@@ -1,0 +1,98 @@
+[gd_resource type="ParticlesMaterial" load_steps=9 format=2]
+
+[sub_resource type="Curve" id=1]
+
+min_value = -360.0
+max_value = 360.0
+bake_resolution = 100
+_data = [ Vector2( 0.00398663, 15.4688 ), 0.0, 2407.48, 0, 0, Vector2( 0.239776, -278.438 ), 0.0, 0.0, 0, 0, Vector2( 0.403485, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+
+flags = 4
+width = 2048
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+
+min_value = 0.0
+max_value = 100.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.429141, 33.8867 ), 0.0, 0.0, 0, 0, Vector2( 0.64294, 88.6719 ), 1582.7, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+
+flags = 4
+width = 2048
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0.00154321, 1 ), 0.0, 0.155969, 0, 0, Vector2( 0.258102, 0.392578 ), -2.93092, -2.93092, 0, 0, Vector2( 0.667374, 0.435547 ), 0.0, 0.0, 0, 0, Vector2( 0.910494, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+
+flags = 4
+width = 2048
+curve = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.721129, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+
+flags = 4
+width = 2048
+curve = SubResource( 7 )
+
+[resource]
+
+render_priority = 0
+trail_divisor = 1
+trail_size_modifier = SubResource( 8 )
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+damping_curve = SubResource( 4 )
+angle = 720.0
+angle_random = 1.0
+angle_curve = SubResource( 2 )
+scale = 7.0
+scale_random = 0.0
+scale_curve = SubResource( 6 )
+color = Color( 1, 0, 0, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Emission Shape", "Initial Velocity", "Spread", "Trail" ]
+

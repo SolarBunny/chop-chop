@@ -15,6 +15,7 @@
 [ext_resource path="res://Scenes/Player/Sounds/Sword_Hit.wav" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Player/Sounds/Sword_Swing.wav" type="AudioStream" id=14]
 [ext_resource path="res://Scenes/Player/Sounds/Jump.wav" type="AudioStream" id=15]
+[ext_resource path="res://Scenes/Player/Sounds/Land.wav" type="AudioStream" id=16]
 
 [sub_resource type="Shader" id=1]
 
@@ -30,35 +31,29 @@ shader = SubResource( 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 6.98434, 7.85875 )
 
-[sub_resource type="CapsuleShape2D" id=4]
-
-custom_solver_bias = 0.0
-radius = 16.2763
-height = 40.9306
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 18.5783, 33.721 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=5]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.330595, 0.575195 ), -2.30848, -2.30848, 0, 0, Vector2( 0.604812, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
+[sub_resource type="CurveTexture" id=6]
 
 flags = 4
 width = 2048
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 
 render_priority = 0
 trail_divisor = 1
-trail_size_modifier = SubResource( 7 )
+trail_size_modifier = SubResource( 6 )
 emission_shape = 2
 emission_box_extents = Vector3( 5, 5, 1 )
 flag_align_y = false
@@ -95,7 +90,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Gravity", "Trail" ]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 length = 0.25
 loop = false
@@ -119,13 +114,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.25 ),
+"times": PoolRealArray( 0, 0.05, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 
 length = 0.2
 loop = true
@@ -143,7 +138,7 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 
 length = 0.1
 loop = true
@@ -161,7 +156,7 @@ tracks/0/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 
 length = 0.1
 loop = true
@@ -179,7 +174,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 
 length = 0.2
 loop = true
@@ -197,12 +192,20 @@ tracks/0/keys = {
 "values": [ 1, 11 ]
 }
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=13]
 
 size = 30
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 10 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=14]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=15]
@@ -213,7 +216,11 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="Theme" id=16]
+
+default_font = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=17]
 
 size = 20
 use_mipmaps = false
@@ -221,19 +228,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Theme" id=17]
-
-default_font = SubResource( 16 )
-
-[sub_resource type="DynamicFont" id=18]
-
-size = 20
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 2
@@ -279,12 +274,12 @@ shape = SubResource( 3 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
-position = Vector2( -14.3042, -1.33954 )
-z_index = 1
-shape = SubResource( 4 )
-_sections_unfolded = [ "Z Index" ]
+z_index = 9
+build_mode = 0
+polygon = PoolVector2Array( -25.0974, 35.2099, -2.87282, 35.2099, -2.54111, -34.7809, -24.7657, -34.7809 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="HitBox" type="Area2D" parent="." index="2" groups=[
 "Player",
@@ -307,7 +302,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 position = Vector2( -14.8914, 0 )
 z_index = 1
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
@@ -358,7 +353,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 8 )
+process_material = SubResource( 7 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -375,22 +370,22 @@ autostart = false
 [node name="Invincibility" type="Timer" parent="." index="6"]
 
 process_mode = 1
-wait_time = 0.3
+wait_time = 0.414115
 one_shot = false
 autostart = false
 
 [node name="Anim" type="AnimationPlayer" parent="." index="7"]
 
 root_node = NodePath("..")
-autoplay = ""
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 9 )
-anims/fall = SubResource( 10 )
-anims/idle = SubResource( 11 )
-anims/jump = SubResource( 12 )
-anims/walk = SubResource( 13 )
+anims/attack = SubResource( 8 )
+anims/fall = SubResource( 9 )
+anims/idle = SubResource( 10 )
+anims/jump = SubResource( 11 )
+anims/walk = SubResource( 12 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -407,7 +402,6 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="GUI" type="CanvasLayer" parent="." index="9"]
 
-editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -417,7 +411,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="Control" type="Control" parent="GUI" index="0"]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -469,7 +462,6 @@ _sections_unfolded = [ "Textures" ]
 
 [node name="Pause" type="NinePatchRect" parent="GUI/Control" index="1"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -522,7 +514,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 13 )
 text = "PAUSED"
 align = 1
 valign = 1
@@ -533,7 +525,6 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/Control/Pause" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -569,15 +560,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "resume"
+text = "Resume"
 flat = true
 align = 1
-_sections_unfolded = [ "Textures", "custom_fonts" ]
+_sections_unfolded = [ "Textures" ]
 
 [node name="Fullscreen" type="Button" parent="GUI/Control/Pause/VBoxContainer" index="1"]
 
@@ -597,12 +588,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 17 )
+theme = SubResource( 16 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Fullscreen"
+text = "Fullscreen: Off"
 flat = true
 align = 1
 _sections_unfolded = [ "Theme" ]
@@ -625,7 +616,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -669,6 +660,15 @@ bus = "Sound"
 stream = ExtResource( 15 )
 volume_db = -7.73
 pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound"
+
+[node name="Land" type="AudioStreamPlayer" parent="." index="14"]
+
+stream = ExtResource( 16 )
+volume_db = -11.26
+pitch_scale = 0.55
 autoplay = false
 mix_target = 0
 bus = "Sound"

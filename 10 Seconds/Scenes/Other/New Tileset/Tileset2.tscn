@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Tileset2" type="Node"]
+[node name="Tileset2" type="Node" index="0"]
 
 [node name="Tile1" type="Sprite" parent="." index="0"]
 
@@ -17,7 +17,9 @@ region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile1" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile1" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -41,7 +43,9 @@ region_enabled = true
 region_rect = Rect2( 32, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile2" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile2" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -64,7 +68,9 @@ region_enabled = true
 region_rect = Rect2( 48, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile3" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile3" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -87,11 +93,13 @@ region_enabled = true
 region_rect = Rect2( 16, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile4" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile4" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 33
+collision_mask = 33
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -110,15 +118,18 @@ region_enabled = true
 region_rect = Rect2( 32, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile5" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile5" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 33
+collision_mask = 33
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tile5/StaticBody2D" index="0"]
 
@@ -133,7 +144,9 @@ region_enabled = true
 region_rect = Rect2( 48, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile6" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile6" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -156,7 +169,9 @@ region_enabled = true
 region_rect = Rect2( 16, 48, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile7" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile7" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -179,7 +194,9 @@ region_enabled = true
 region_rect = Rect2( 32, 48, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile8" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile8" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -202,7 +219,9 @@ region_enabled = true
 region_rect = Rect2( 48, 48, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile9" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile9" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -225,7 +244,9 @@ region_enabled = true
 region_rect = Rect2( 96, 48, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile10" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile10" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -248,7 +269,9 @@ region_enabled = true
 region_rect = Rect2( 96, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile11" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile11" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -271,7 +294,9 @@ region_enabled = true
 region_rect = Rect2( 80, 16, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile12" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile12" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -294,7 +319,9 @@ region_enabled = true
 region_rect = Rect2( 80, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile13" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile13" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -317,7 +344,9 @@ region_enabled = true
 region_rect = Rect2( 96, 0, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile14" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile14" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -343,7 +372,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile15" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile15" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -369,7 +400,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile16" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile16" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -395,7 +428,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile17" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile17" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -421,7 +456,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile18" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile18" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -447,7 +484,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile19" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile19" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -473,7 +512,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile20" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile20" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -499,7 +540,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile21" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile21" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -525,7 +568,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile22" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile22" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -551,7 +596,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile23" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile23" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -577,7 +624,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile24" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile24" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -603,7 +652,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Tile25" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Tile25" index="0" groups=[
+"Solids",
+]]
 
 input_pickable = false
 collision_layer = 1

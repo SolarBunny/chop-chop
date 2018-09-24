@@ -12,6 +12,7 @@ var attacking
 var health
 var can_jump
 var debug = false
+var has_played_landing_sound
 
 func _ready():
 	can_attack = true
@@ -22,7 +23,7 @@ func _ready():
 
 func _physics_process(delta):
 	controls_loop()
-
+		
 	if health <= 0:
 		die()
 	
@@ -54,17 +55,27 @@ func controls_loop():
 		movedir.x = 0
 	
 	var jumping 
+
 	if is_on_floor():
 		jumping = false
 		can_jump = true
 	
 	if Input.is_action_just_pressed("jump") and can_jump:
 		movedir.y = jumpforce
-		can_jump = false
 		$Jump_Sound.play()
 	elif Input.is_action_just_released("jump"):
 		if movedir.y < -75:
 			movedir.y = movedir.y * 0.55
+			
+	
+	if is_on_floor() and !has_played_landing_sound:
+		$Land.play()
+		has_played_landing_sound = true
+	elif !is_on_floor():
+		has_played_landing_sound = false
+
+	if not is_on_floor():
+		can_jump = false
 
 	if movedir.y < 0:
 		jumping = true

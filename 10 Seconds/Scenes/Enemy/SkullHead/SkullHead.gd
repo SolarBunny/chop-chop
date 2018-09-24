@@ -10,7 +10,7 @@ var dir = [left, right]
 var health = 2
 var speed = 75
 var state
-enum states{NORMAL, STUN, DIE}
+enum states {NORMAL, STUN, DIE}
 var anim = ""
 var new_anim
 var harmful 
@@ -35,12 +35,11 @@ func _change_state(new_state):
 			set_physics_process(false)
 			$Stun.start()
 			new_anim = "Stun"
-			harmful = false
 		DIE:
-			$Sprite.hide()
-			$Particles2D.emitting
 			harmful = false
-			$Stun.start()
+			$Death_Noise.play()
+			new_anim = "Die"
+			set_physics_process(false)
 	state = new_state
 	if anim != new_anim:
 		anim = new_anim
@@ -91,10 +90,12 @@ func damage(DAMAGE):
 func _on_Stun_timeout():
 	if state == STUN:
 		_change_state(NORMAL)
-	elif state == DIE:
-		queue_free()
 # the end!
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player") and harmful:
 		area.get_parent().damage(damage)
+
+func _on_Anim_animation_finished(anim_name):
+	if new_anim == "Die":
+		queue_free()

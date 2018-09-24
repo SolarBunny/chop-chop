@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Other/Reusable/Props/Moving Platform H/MovingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Other/New Tileset/Tileset 3.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 23.3333, 7.04884 )
+
+[sub_resource type="RayShape2D" id=2]
+
+custom_solver_bias = 0.0
+length = 10.0
 
 [node name="MovingPlatformH" type="KinematicBody2D"]
 
@@ -28,5 +33,47 @@ region_rect = Rect2( 112, 48, 48, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+
+[node name="right_dec" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 26.6667, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_dec" index="0"]
+
+rotation = 4.71239
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="left_dec" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( -26.6667, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="left_dec" index="0"]
+
+position = Vector2( 0.0124569, -0.0500349 )
+rotation = 1.5708
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="right_dec" to="." method="_on_right_dec_body_entered"]
+
+[connection signal="body_entered" from="left_dec" to="." method="_on_left_dec_body_entered"]
 
 
